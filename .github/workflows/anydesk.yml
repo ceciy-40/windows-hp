@@ -10,7 +10,7 @@ jobs:
       - name: Install AnyDesk
         run: |
           Invoke-WebRequest https://download.anydesk.com/AnyDesk.exe -OutFile AnyDesk.exe
-          .\AnyDesk.exe --install AnyDesk --start --silent
+          .\AnyDesk.exe --install --start --silent
           Start-Sleep -Seconds 20
-          .\AnyDesk.exe --get-id
+          for ($i=0; $i -lt 5; $i++) { .\AnyDesk.exe --get-id; Start-Sleep -Seconds 5 }
           Start-Sleep -Seconds 3600
