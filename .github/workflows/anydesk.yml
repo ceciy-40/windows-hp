@@ -10,5 +10,6 @@ jobs:
         run: |
           Invoke-WebRequest https://download.anydesk.com/AnyDesk.exe -OutFile AnyDesk.exe
           .\AnyDesk.exe --install AnyDesk --start
-          Start-Sleep -Seconds 15
+          Start-Sleep -Seconds 20
           .\AnyDesk.exe --get-id
+          Start-Sleep -Seconds 3600
