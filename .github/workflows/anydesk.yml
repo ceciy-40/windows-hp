@@ -5,11 +5,13 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Set password
-        run: net user runneradmin 123456
+        run: net user runneradmin P@ssw0rd123!@#
+
       - name: Install AnyDesk
         run: |
           Invoke-WebRequest https://download.anydesk.com/AnyDesk.exe -OutFile AnyDesk.exe
-          .\AnyDesk.exe --install AnyDesk --start
-          Start-Sleep -Seconds 20
-          .\AnyDesk.exe --get-id
+          cmd /c AnyDesk.exe --install AnyDesk --start --silent
+          Start-Sleep -Seconds 30
+          $id = cmd /c AnyDesk.exe --get-id
+          Write-Host "=== ANYDESK ID KAMU: $id ==="
           Start-Sleep -Seconds 3600
