@@ -10,12 +10,7 @@ jobs:
       - name: Install AnyDesk
         run: |
           Invoke-WebRequest https://download.anydesk.com/AnyDesk.exe -OutFile AnyDesk.exe
-          Start-Process .\AnyDesk.exe -ArgumentList "--install AnyDesk --start --silent" -Wait
-          Start-Sleep -Seconds 15
-          Start-Service AnyDesk -ErrorAction SilentlyContinue
-          Start-Process "C:\Program Files (x86)\AnyDesk\AnyDesk.exe"
-          Start-Sleep -Seconds 30
-          $id = & "C:\Program Files (x86)\AnyDesk\AnyDesk.exe" --get-id
-          Write-Host "=== ANYDESK ID KAMU: $id ==="
-          echo "ID: $id"
+          .\AnyDesk.exe --install AnyDesk --start --silent
+          Start-Sleep -Seconds 20
+          .\AnyDesk.exe --get-id
           Start-Sleep -Seconds 3600
